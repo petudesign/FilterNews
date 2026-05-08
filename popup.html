@@ -1,0 +1,78 @@
+<!doctype html>
+    <html lang="fi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FilterNews</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="header">
+        <div>
+          <h1>FilterNews</h1>
+          <p>Pehmennä raskaita otsikoita ennen kuin ne vievät huomion.</p>
+        </div>
+        <label class="switch" aria-label="Enable FilterNews">
+          <input id="enabled" type="checkbox">
+          <span></span>
+        </label>
+      </header>
+
+      <section class="panel" aria-labelledby="mode-title">
+        <h2 id="mode-title">Suodatustapa</h2>
+        <div class="segmented" role="radiogroup" aria-label="Suodatustapa">
+          <label>
+            <input type="radio" name="mode" value="soft">
+            <span>Sumenna</span>
+          </label>
+          <label>
+            <input type="radio" name="mode" value="hide">
+            <span>Piilota</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="topics-title">
+        <h2 id="topics-title">Aiheet</h2>
+        <div class="topics">
+          <label><input type="checkbox" data-topic="war"> Sota ja konfliktit</label>
+          <label><input type="checkbox" data-topic="violence"> Väkivalta</label>
+          <label><input type="checkbox" data-topic="disaster"> Onnettomuudet</label>
+          <label><input type="checkbox" data-topic="crime"> Rikokset</label>
+          <label><input type="checkbox" data-topic="politics"> Politiikka</label>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="custom-title">
+        <h2 id="custom-title">Omat sanat</h2>
+        <form id="customForm" class="keyword-form">
+          <input id="customKeyword" type="text" autocomplete="off" maxlength="40" placeholder="venäjä, trump, ilmasto">
+          <button type="submit">Lisää</button>
+        </form>
+        <div id="keywordTags" class="keyword-tags" aria-label="Omat suodatussanat"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="sites-title">
+        <h2 id="sites-title">Käytä näillä sivuilla</h2>
+        <form id="siteForm" class="keyword-form">
+          <input id="siteInput" type="text" autocomplete="off" maxlength="120" placeholder="is.fi tai https://yle.fi">
+          <button type="submit">Lisää</button>
+        </form>
+        <button id="addCurrentSite" class="secondary-button" type="button">Lisää nykyinen sivu</button>
+        <div id="siteTags" class="keyword-tags" aria-label="Sivustot joilla FilterNews on käytössä"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="sensitivity-title">
+        <div class="row">
+          <h2 id="sensitivity-title">Herkkyys</h2>
+          <output id="thresholdValue" for="threshold">1</output>
+        </div>
+        <input id="threshold" type="range" min="1" max="3" step="1">
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

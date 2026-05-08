@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "FilterNews",
+  "description": "Vähennä uutisten kognitiivista kuormaa pehmentämällä raskaita aiheita sivulla.",
+  "version": "0.1.0",
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_title": "FilterNews",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["filternews.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
